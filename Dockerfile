@@ -1,6 +1,8 @@
 FROM --platform=$BUILDPLATFORM python:3.11-slim-bookworm
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
+ARG TARGETARCH
+RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM with $TARGETARCH"
 
 RUN <<EOF
     set -e
@@ -26,5 +28,6 @@ pipx     $(pipx --version)
 poetry   $(poetry --version)
 EOF
 
+EXPOSE 8000
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["python"]
