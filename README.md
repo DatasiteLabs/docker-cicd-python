@@ -42,6 +42,25 @@ Run the scripts
 
 The localdomain can't be localhost, 0.0.0.0, 127.0.0.1 or others on the insecure repository list, port is 5001.
 
+## Generating the Test App
+
+This tests FastAPI and NX, see https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024 for a guide. For updates it may be cleaner to start over.
+
+```
+npx create-nx-workspace test --preset=npm
+cd test
+npm install @nxlv/python --save-dev
+npx nx generate @nxlv/python:poetry-project proj1 \
+--projectType application \
+--description='My Project 1' \
+--packageName=pymonorepo-proj1 \
+--moduleName=pymonorepo_proj1
+--directory packages/proj1
+
+npx nx affected --target install -- --group=dev
+npx nx affected --target build
+npx nx affected --target test
+```
 Use: 'host.docker.internal'
 
 Run docker info to see list.
