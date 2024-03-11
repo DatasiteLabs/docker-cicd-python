@@ -95,7 +95,7 @@ jobs:
         id: docker-build-consumer
         uses: docker/build-push-action@v3
         with:
-          context: ./test-app
+          context: ./test-nx
           platforms: linux/amd64
           build-args: DOCKER_REPO=localhost:5000
           load: true
