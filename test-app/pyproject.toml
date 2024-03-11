@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "test-app"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.110.0"}
+pytest-cov = "^4.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "--cov=test_app --cov-report=term"
+filterwarnings = [
+    "ignore:The 'app' shortcut is now deprecated:DeprecationWarning:httpx",
+]
