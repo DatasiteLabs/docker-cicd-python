@@ -8,4 +8,9 @@ RUN echo "current user: $(whoami)" && \
     echo "current python: $(python -v)" && \
     echo "current node: $(node -v)"
 
-ENTRYPOINT [ "bash", "-c", "npx nx affected --target install -- --group=dev; npx nx affected --target build; npx nx affected --target test" ]
+RUN npm ci \
+    # typically you would run affected instead, this is just testing all for build purposes
+    && npx nx run-many --target install -- --group=dev \
+    && npx nx run-many --target build
+
+ENTRYPOINT [ "bash", "-c", "npx nx run-many --target test" ]
