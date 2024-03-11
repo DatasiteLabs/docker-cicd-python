@@ -10,5 +10,5 @@ LOCAL_NAME=${DOCKER_REPO}/datasite/test-cicd-python
 
 echo "Running tests against ${LOCAL_NAME}"
 
-docker pull ${LOCAL_NAME}-consumer:latest-python
-docker run -it --user python "${LOCAL_NAME}-consumer:latest-python"
+docker run -it --user python --pull=always "${LOCAL_NAME}-nx-consumer:latest-python"
+docker run -it --user python --pull=always "${LOCAL_NAME}-app-consumer:latest-python"

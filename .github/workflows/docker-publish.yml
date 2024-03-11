@@ -17,7 +17,8 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: datasite/docker-cicd-python
   TEST_TAG: localhost:5000/datasite/test-cicd-python:latest-python
-  TEST_CONSUMER_TAG: test-cicd-python-consumer
+  TEST_NX_CONSUMER_TAG: test-cicd-python-nx-consumer
+  TEST_APP_CONSUMER_TAG: test-cicd-python-app-consumer
 
 jobs:
   build:
@@ -91,7 +92,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and export consumer test container to Docker
+      - name: Build and export nx consumer test container to Docker
         id: docker-build-consumer
         uses: docker/build-push-action@v3
         with:
@@ -99,7 +100,18 @@ jobs:
           platforms: linux/amd64
           build-args: DOCKER_REPO=localhost:5000
           load: true
-          tags: ${{ env.TEST_CONSUMER_TAG }}
+          tags: ${{ env.TEST_NX_CONSUMER_TAG }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Build and export app consumer test container to Docker
+        id: docker-build-consumer
+        uses: docker/build-push-action@v3
+        with:
+          context: ./test-app
+          platforms: linux/amd64
+          build-args: DOCKER_REPO=localhost:5000
+          load: true
+          tags: ${{ env.TEST_APP_CONSUMER_TAG }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -107,7 +119,8 @@ jobs:
         id: test
         # I would rather run rootless or as 'python' user like jenkins does, that is problematic here
         run: |
-          docker run --rm --user python ${{ env.TEST_CONSUMER_TAG }}
+          docker run --rm --user python ${{ env.TEST_NX_CONSUMER_TAG }}
+          docker run --rm --user python ${{ env.TEST_APP_CONSUMER_TAG }}
 
       - name: Push
         id: docker-push
