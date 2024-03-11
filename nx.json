@@ -1,0 +1,23 @@
+{
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "plugins": [
+    {
+      "plugin": "@nxlv/python"
+    }
+  ],
+  "generators": {
+    "@nxlv/python:poetry-project": {
+      "pyenvPythonVersion": "3.11.8",
+      "pyprojectPythonDependency": ">=3.11,<3.12"
+    }
+  }
+}
