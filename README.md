@@ -42,25 +42,6 @@ Run the scripts
 
 The localdomain can't be localhost, 0.0.0.0, 127.0.0.1 or others on the insecure repository list, port is 5001.
 
-## Generating the Test App
-
-This tests FastAPI and NX, see https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024 for a guide. For updates it may be cleaner to start over.
-
-```
-npx create-nx-workspace test --preset=npm
-cd test
-npm install @nxlv/python --save-dev
-npx nx generate @nxlv/python:poetry-project proj1 \
---projectType application \
---description='My Project 1' \
---packageName=pymonorepo-proj1 \
---moduleName=pymonorepo_proj1
---directory packages/proj1
-
-npx nx affected --target install -- --group=dev
-npx nx affected --target build
-npx nx affected --target test
-```
 Use: 'host.docker.internal'
 
 Run docker info to see list.
@@ -77,13 +58,47 @@ This will give you an https path locally (and externally, shutdown when done).
 ### Run
 
 ```bash
-# ./build.sh <platforms> <localdomain:port>
-./run.sh linux/arm64 host.docker.internal:5001
+# ./run.sh <localdomain:port>
+./run.sh host.docker.internal:5001
 ```
 
 ### Test
 
 ```bash
-# ./build.sh <platforms> <localdomain:port>
-./test.sh linux/arm64 host.docker.internal:5001
+# ./build.sh <localdomain:port>
+./test.sh host.docker.internal:5001
 ```
+
+## Generating the Test App
+
+This tests FastAPI and NX, see https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024 for a guide. For updates it may be cleaner to start over.
+
+There is a script called `generate-test-nx.sh` that will create the test project.
+
+### Updates
+
+Update the root [nx.json](./nx.json). Make sure to update the version to match the output from the base [Dockerfile](./Dockerfile) and have a compatible version string. i.e. `docker run -it python:3.11-slim-bookworm python --version` will output 3.11.8 today.
+
+The script will execute something like the following base steps based on https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024. If there are changes update the script. Use the script vs. manual setup, this is just documentation.
+
+```
+npx create-nx-workspace test-nx --preset=npm --nxCloud=skip
+cp ./Dockerfile.test-nx ./test-nx/Dockerfile
+
+cd test-nx
+npm install @nxlv/python --save-dev
+cp ../nx.json ./nx.json
+
+npx nx generate @nxlv/python:poetry-project proj1 \
+--projectType application \
+--description='My Project 1' \
+--packageName=pymonorepo-proj1 \
+--moduleName=pymonorepo_proj1
+--directory packages/proj1
+
+npx nx run-many --target install -- --group=dev
+npx nx run-many --target build
+npx nx run-many --target test
+```
+
+**NOTE**: In your CI you would use `affected` instead of `run-many`. When testing a new project it's a good idea to test all once.

@@ -12,4 +12,4 @@ LOCAL_NAME=${DOCKER_REPO}/datasite/test-cicd-python
 echo "Building ${LOCAL_NAME}"
 
 docker buildx build --builder=container --platform="${PLATFORMS}" --push --pull -t "${LOCAL_NAME}:latest-python" "${__dir}/"
-docker buildx build --builder=container --platform="${PLATFORMS}" --push -t "${LOCAL_NAME}-consumer:latest-python" --build-arg=DOCKER_REPO=${DOCKER_REPO} "${__dir}/test"
+docker buildx build --builder=container --platform="${PLATFORMS}" --push -t "${LOCAL_NAME}-consumer:latest-python" --build-arg=DOCKER_REPO=${DOCKER_REPO} "${__dir}/test-nx"

@@ -7,7 +7,7 @@ exclude_lines = ['if TYPE_CHECKING:']
 show_missing = true
 
 [tool.pytest.ini_options]
-addopts = "--cov --cov-report html:'../coverage/proj1/html' --cov-report xml:'../coverage/proj1/coverage.xml' --html='../reports/proj1/unittests/html/index.html' --junitxml='../reports/proj1/unittests/junit.xml'"
+addopts = "--cov --cov-report html:'../../coverage/packages/proj1/html' --cov-report xml:'../../coverage/packages/proj1/coverage.xml' --html='../../reports/packages/proj1/unittests/html/index.html' --junitxml='../../reports/packages/proj1/unittests/junit.xml'"
 
 [tool.poetry]
 name = "pymonorepo-proj1"
@@ -21,7 +21,7 @@ readme = 'README.md'
   include = "pymonorepo_proj1"
 
   [tool.poetry.dependencies]
-  python = ">=3.9,<3.11"
+  python = ">=3.11,<3.12"
 
   [tool.poetry.group.dev.dependencies]
   autopep8 = "2.0.2"
