@@ -93,7 +93,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build and export nx consumer test container to Docker
-        id: docker-build-consumer
+        id: docker-build-nx-consumer
         uses: docker/build-push-action@v3
         with:
           context: ./test-nx
@@ -104,7 +104,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Build and export app consumer test container to Docker
-        id: docker-build-consumer
+        id: docker-build-app-consumer
         uses: docker/build-push-action@v3
         with:
           context: ./test-app
