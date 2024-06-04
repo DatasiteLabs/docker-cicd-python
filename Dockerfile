@@ -27,17 +27,23 @@ RUN <<EOF
     vim-tiny \
     curl \
     git \
-    gh
+    gh \
+    libbz2-dev \
+    libsqlite3-dev \
+    rabbitmq-server
 
     rm -rf /var/lib/apt/lists/*
     apt-get clean
 EOF
 
+RUN npm install -g azurite
+
 USER python
 VOLUME /home/python
 ENV PATH /home/python/.local/bin:$PATH
 
-RUN pipx install poetry
+RUN pipx install poetry && \
+    pipx install nox
 
 RUN cat <<EOF
 Version Info:
