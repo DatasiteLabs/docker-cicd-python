@@ -3,7 +3,9 @@ from harbor.dsite.io/devops-cloud/k8s-cloud-system-cli/main/jenkins:1.2.6
 USER root
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -qy libbz2-dev libsqlite3-dev rabbitmq-server
+    apt-get install --no-install-recommends -qy \
+    libmagic zlib1g-dev libjpeg-dev libmagickwand-dev xvfb poppler-utils libfile-mimeinfo-perl qpdf libimage-exiftool-perl \
+    ffmpeg lzma liblzma-dev libbz2-dev libsqlite3-dev rabbitmq-server pipx
 
 RUN curl -O https://www.python.org/ftp/python/3.11.8/Python-3.11.8.tgz && \
     tar -xvzf Python-3.11.8.tgz && \
