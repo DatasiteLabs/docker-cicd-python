@@ -31,7 +31,7 @@ RUN <<EOF
     libbz2-dev \
     libsqlite3-dev \
     rabbitmq-server \
-    make
+    build-essential
 
     rm -rf /var/lib/apt/lists/*
     apt-get clean
