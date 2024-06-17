@@ -30,7 +30,8 @@ RUN <<EOF
     gh \
     libbz2-dev \
     libsqlite3-dev \
-    rabbitmq-server
+    rabbitmq-server \
+    make
 
     rm -rf /var/lib/apt/lists/*
     apt-get clean
