@@ -1,4 +1,4 @@
-from harbor.dsite.io/devops-cloud/k8s-cloud-system-cli/main/jenkins:1.2.6
+from harbor.dsite.io/devops-cloud/k8s-cloud-system-cli/main/jenkins:1.2.8
 
 USER root
 
