@@ -9,4 +9,4 @@ LOCAL_NAME=${DOCKER_REPO}/datasite/test-cicd-python
 echo "Running ${LOCAL_NAME}"
 
 docker pull "${LOCAL_NAME}:latest-python"
-docker run -it --user python -v $(pwd):/usr/src -w /usr/src -p 8000:8000 "${LOCAL_NAME}:latest-python"
+docker run -it --user python -v "$(pwd)":/usr/src -w /usr/src -p 8000:8000 "${LOCAL_NAME}:latest-python" bash
