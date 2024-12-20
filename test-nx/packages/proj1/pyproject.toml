@@ -21,7 +21,7 @@ readme = 'README.md'
   include = "proj1"
 
   [tool.poetry.dependencies]
-  python = ">=3.12,<3.13"
+  python = ">=3.13,<3.14"
 
   [tool.poetry.group.dev.dependencies]
   autopep8 = "2.3.1"
