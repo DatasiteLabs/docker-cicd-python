@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM python:3.12.3-slim-bookworm
+FROM --platform=$BUILDPLATFORM python:3.12.8-slim-bookworm
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 ARG TARGETARCH
@@ -10,6 +10,9 @@ RUN <<EOF
     useradd --uid 1000 --gid python --create-home --shell /bin/sh python
 EOF
 
+# ensure correct python version for pipx
+RUN python -m pip install pipx
+
 RUN <<EOF
     set -eux
     apt-get update
@@ -18,8 +21,7 @@ RUN <<EOF
     chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
     apt-get update
-    apt-get install --assume-yes --no-install-recommends pipx \
-    dumb-init \
+    apt-get install --assume-yes --no-install-recommends dumb-init \
     nodejs \
     npm \
     unzip \

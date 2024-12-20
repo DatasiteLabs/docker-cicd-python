@@ -77,13 +77,14 @@ There is a script called `generate-test-nx.sh` that will create the test project
 
 ### Updates
 
-Update the root [nx.json](./nx.json). Make sure to update the version to match the output from the base [Dockerfile](./Dockerfile) and have a compatible version string. i.e. `docker run -it python:3.11-slim-bookworm python --version` will output 3.11.8 today.
+Update the root [nx.json](./nx.json). Make sure to update the version to match the output from the base [Dockerfile](./Dockerfile) and have a compatible version string. i.e. `docker run -it python:3.12-slim-bookworm python --version` will output 3.12.8 today.
 
-The script will execute something like the following base steps based on https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024. If there are changes update the script. Use the script vs. manual setup, this is just documentation.
+The [script](./generate-test-nx.sh) will execute something like the following base steps based on https://betterprogramming.pub/poetry-python-nx-monorepo-5750d8627024. If there are changes update the script. Use the script vs. manual setup, this is just documentation.
 
 ```
 npx create-nx-workspace test-nx --preset=npm --nxCloud=skip
 cp ./Dockerfile.test-nx ./test-nx/Dockerfile
+cp ./test-app/poetry.toml ./test-nx/poetry.toml
 
 cd test-nx
 npm install @nxlv/python --save-dev
@@ -92,8 +93,6 @@ cp ../nx.json ./nx.json
 npx nx generate @nxlv/python:poetry-project proj1 \
 --projectType application \
 --description='My Project 1' \
---packageName=pymonorepo-proj1 \
---moduleName=pymonorepo_proj1
 --directory packages/proj1
 
 npx nx run-many --target install -- --group=dev

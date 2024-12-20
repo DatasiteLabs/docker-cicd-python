@@ -6,9 +6,11 @@ set -o nounset
 readonly __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 OUTPUT_DIR=test-nx
+rm -rf "${OUTPUT_DIR}"
 
 npx create-nx-workspace ${OUTPUT_DIR} --preset=npm --nxCloud=skip
 cp ./Dockerfile.test-nx ./${OUTPUT_DIR}/Dockerfile
+cp ./test-app/poetry.toml ./test-nx/poetry.toml
 
 cd "${__dir}/${OUTPUT_DIR}"
 npm install @nxlv/python --save-dev
@@ -18,8 +20,6 @@ echo "Creating sample project"
 npx nx generate @nxlv/python:poetry-project proj1 \
 --projectType application \
 --description='My Project 1' \
---packageName=pymonorepo-proj1 \
---moduleName=pymonorepo_proj1 \
 --directory packages/proj1
 
 echo "Testing setup"
