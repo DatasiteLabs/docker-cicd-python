@@ -5,9 +5,9 @@
   "scripts": {},
   "private": true,
   "devDependencies": {
-    "@nx/js": "20.3.0",
+    "@nx/js": "20.4.6",
     "@nxlv/python": "^20.2.0",
-    "nx": "20.3.0"
+    "nx": "20.4.6"
   },
   "workspaces": [
     "libs/**",
