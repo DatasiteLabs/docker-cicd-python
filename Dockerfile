@@ -44,9 +44,9 @@ RUN npm install -g azurite
 
 USER python
 VOLUME /home/python
-ENV PATH /home/python/.local/bin:$PATH
+ENV PATH=/home/python/.local/bin:$PATH
 
-RUN pipx install poetry && \
+RUN pipx install poetry==1.8.5 && \
     pipx install nox
 
 RUN cat <<EOF
