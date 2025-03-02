@@ -1,4 +1,4 @@
-ARG DOCKER_REPO
+ARG DOCKER_REPO=localhost:5001
 FROM --platform=$BUILDPLATFORM ${DOCKER_REPO}/datasite/test-cicd-python:latest-python
 
 COPY --chown=python ./ /usr/src/test
