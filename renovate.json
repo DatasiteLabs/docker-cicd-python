@@ -11,6 +11,12 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": ["python"],
+      "matchManagers": ["dockerfile", "poetry"],
+      "matchUpdateTypes": ["minor"],
+      "enabled": false
+    },
+    {
       "extends": [
         "group:angularMonorepo"
       ],
