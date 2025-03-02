@@ -5,97 +5,141 @@
     "group:all"
   ],
   "configMigration": true,
-  "separateMajorMinor" : true,
-  "lockFileMaintenance": { "enabled": true },
+  "separateMajorMinor": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
-      "extends": ["group:angularMonorepo"],
+      "extends": [
+        "group:angularMonorepo"
+      ],
       "enabled": false
     },
     {
-      "extends": ["group:nrwlMonorepo"],
+      "extends": [
+        "group:nxMonorepo"
+      ],
       "enabled": false
     },
     {
       "groupName": "NX Plugin",
-      "matchSourceUrlPrefixes": ["https://github.com/lucasvieirasilva/nx-plugins"],
-      "enabled": false
+      "enabled": false,
+      "matchSourceUrls": [
+        "https://github.com/lucasvieirasilva/nx-plugins{/,}**"
+      ]
     },
     {
       "groupName": "Cypress",
-      "matchSourceUrlPrefixes": ["https://github.com/cypress-io/cypress"],
+      "enabled": false,
+      "matchSourceUrls": [
+        "https://github.com/cypress-io/cypress{/,}**"
+      ]
+    },
+    {
+      "extends": [
+        "group:jestMonorepo"
+      ],
       "enabled": false
     },
     {
-      "extends": ["group:jestMonorepo"],
-      "enabled": false
-    },
-    {
-      "extends": ["group:jestMonorepo"],
+      "extends": [
+        "group:jestMonorepo"
+      ],
       "enabled": false
     },
     {
       "groupName": "express",
-      "matchSourceUrlPrefixes": ["https://github.com/expressjs/express"],
-      "enabled": false
+      "enabled": false,
+      "matchSourceUrls": [
+        "https://github.com/expressjs/express{/,}**"
+      ]
     },
     {
       "groupName": "nestjs",
-      "matchSourceUrlPrefixes": ["https://github.com/nestjs/nest"],
+      "enabled": false,
+      "matchSourceUrls": [
+        "https://github.com/nestjs/nest{/,}**"
+      ]
+    },
+    {
+      "extends": [
+        "group:nextjsMonorepo"
+      ],
       "enabled": false
     },
     {
-      "extends": ["group:nextjsMonorepo"],
+      "extends": [
+        "group:reactMonorepo"
+      ],
       "enabled": false
     },
     {
-      "extends": ["group:reactMonorepo"],
+      "extends": [
+        "group:emotionMonorepo"
+      ],
       "enabled": false
     },
     {
-      "extends": ["group:emotionMonorepo"],
-      "enabled": false
-    },
-    {
-      "extends": ["group:storybookMonorepo"],
+      "extends": [
+        "group:storybookMonorepo"
+      ],
       "enabled": false
     },
     {
       "groupName": "webpack",
-      "matchSourceUrlPrefixes": ["https://github.com/webpack/webpack"],
+      "enabled": false,
+      "matchSourceUrls": [
+        "https://github.com/webpack/webpack{/,}**"
+      ]
+    },
+    {
+      "extends": [
+        "monorepo:typescript-eslint"
+      ],
       "enabled": false
     },
     {
-      "extends": ["monorepo:typescript-eslint"],
+      "extends": [
+        "monorepo:angular-eslint"
+      ],
       "enabled": false
     },
     {
-      "extends": ["monorepo:angular-eslint"],
+      "enabled": false,
+      "matchPackageNames": [
+        "/prettier/"
+      ]
+    },
+    {
+      "extends": [
+        "monorepo:babel"
+      ],
       "enabled": false
     },
     {
-      "matchPackagePatterns": ["prettier"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/eslint*/"
+      ]
     },
     {
-      "extends": ["monorepo:babel"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/typescript/"
+      ]
     },
     {
-      "matchPackagePatterns": ["eslint*"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/react-router-dom/"
+      ]
     },
     {
-      "matchPackagePatterns": ["typescript"],
-      "enabled": false
-    },
-    {
-      "matchPackagePatterns": ["react-router-dom"],
-      "enabled": false
-    },
-    {
-      "matchPackagePatterns": ["tslib"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/tslib/"
+      ]
     }
   ]
 }
