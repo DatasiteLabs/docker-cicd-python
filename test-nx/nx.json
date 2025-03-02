@@ -16,7 +16,7 @@
   ],
   "generators": {
     "@nxlv/python:poetry-project": {
-      "pyenvPythonVersion": "3.12.8",
+      "pyenvPythonVersion": "3.12.9",
       "pyprojectPythonDependency": ">=3.12,<3.13"
     }
   }
