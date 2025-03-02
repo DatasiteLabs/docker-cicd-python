@@ -1,6 +1,101 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "group:all"
+  ],
+  "configMigration": true,
+  "separateMajorMinor" : true,
+  "lockFileMaintenance": { "enabled": true },
+  "packageRules": [
+    {
+      "extends": ["group:angularMonorepo"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:nrwlMonorepo"],
+      "enabled": false
+    },
+    {
+      "groupName": "NX Plugin",
+      "matchSourceUrlPrefixes": ["https://github.com/lucasvieirasilva/nx-plugins"],
+      "enabled": false
+    },
+    {
+      "groupName": "Cypress",
+      "matchSourceUrlPrefixes": ["https://github.com/cypress-io/cypress"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:jestMonorepo"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:jestMonorepo"],
+      "enabled": false
+    },
+    {
+      "groupName": "express",
+      "matchSourceUrlPrefixes": ["https://github.com/expressjs/express"],
+      "enabled": false
+    },
+    {
+      "groupName": "nestjs",
+      "matchSourceUrlPrefixes": ["https://github.com/nestjs/nest"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:nextjsMonorepo"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:reactMonorepo"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:emotionMonorepo"],
+      "enabled": false
+    },
+    {
+      "extends": ["group:storybookMonorepo"],
+      "enabled": false
+    },
+    {
+      "groupName": "webpack",
+      "matchSourceUrlPrefixes": ["https://github.com/webpack/webpack"],
+      "enabled": false
+    },
+    {
+      "extends": ["monorepo:typescript-eslint"],
+      "enabled": false
+    },
+    {
+      "extends": ["monorepo:angular-eslint"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["prettier"],
+      "enabled": false
+    },
+    {
+      "extends": ["monorepo:babel"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["eslint*"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["typescript"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["react-router-dom"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["tslib"],
+      "enabled": false
+    }
   ]
 }
