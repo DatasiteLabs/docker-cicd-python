@@ -45,7 +45,7 @@ USER python
 VOLUME /home/python
 ENV PATH=/home/python/.local/bin:$PATH
 
-RUN pipx install poetry==1.8.5 && \
+RUN pipx install poetry==2.1.1 && \
     pipx install nox
 
 RUN cat <<EOF
