@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM python:3.12.8-slim-bookworm
+FROM --platform=$BUILDPLATFORM python:3.12.9-slim-bookworm
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 ARG TARGETARCH

@@ -8,8 +8,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = {extras = ["all"], version = "^0.110.0"}
-pytest-cov = "^4.1.0"
+fastapi = "^0.115.11"
+pytest-cov = "^6.0.0"
+pydantic-core = "^2.30.0"
+httpx = "^0.28.1"
 
 
 [tool.poetry.group.dev.dependencies]
