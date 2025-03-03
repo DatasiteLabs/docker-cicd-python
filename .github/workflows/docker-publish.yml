@@ -121,6 +121,30 @@ jobs:
           docker run --rm --user python ${{ env.TEST_NX_CONSUMER_TAG }}
           docker run --rm --user python ${{ env.TEST_APP_CONSUMER_TAG }}
 
+      - name: Run Snyk for PR
+        if: github.event_name == 'pull_request'
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: "${{ env.TEST_TAG }}"
+          args: --severity-threshold=high --fail-on=all
+
+      - name: Run Snyk for Release Tags
+        if: github.event_name != 'pull_request'
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: ${{ steps.meta.outputs.tags }}
+          args: --severity-threshold=high --fail-on=all
+
+      - name: Upload result to GitHub Code Scanning
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
+
       - name: Push
         id: docker-push
         uses: docker/build-push-action@v6
