@@ -21,12 +21,12 @@ readme = 'README.md'
   include = "proj1"
 
   [tool.poetry.dependencies]
-  python = ">=3.12,<3.13"
+  python = ">=3.13,<3.14"
 
   [tool.poetry.group.dev.dependencies]
-  autopep8 = "2.3.1"
-  flake8 = "7.1.1"
-  pytest = "8.3.4"
+  autopep8 = "2.3.2"
+  flake8 = "7.1.2"
+  pytest = "8.3.5"
   pytest-sugar = "1.0.0"
   pytest-cov = "6.0.0"
   pytest-html = "4.1.1"
