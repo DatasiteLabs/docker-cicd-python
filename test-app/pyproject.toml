@@ -9,13 +9,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = "^0.115.11"
-pytest-cov = "^6.0.0"
+pytest-cov = "^7.0.0"
 pydantic-core = "^2.30.0"
 httpx = "^0.28.1"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
+pytest = "^9.0.0"
 
 [build-system]
 requires = ["poetry-core"]
